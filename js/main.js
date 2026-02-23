@@ -79,6 +79,59 @@
         dotsData: true,
     });
 
+    // Appointment form submission
+    $('#appointmentForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        var form = $(this);
+        var formData = new FormData(this);
+        var submitBtn = form.find('button[type="submit"]');
+        var originalBtnText = submitBtn.text();
+        
+        // Disable button and show loading state
+        submitBtn.prop('disabled', true).text('Submitting...');
+        
+        $.ajax({
+            type: 'POST',
+            url: form.attr('action'),
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                var messageDiv = $('#formMessage');
+                
+                if (response.success) {
+                    messageDiv.removeClass('alert-danger').addClass('alert-success');
+                    messageDiv.html('<strong>Success!</strong> ' + response.message);
+                    messageDiv.show();
+                    
+                    // Reset form
+                    form[0].reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(function() {
+                        messageDiv.fadeOut();
+                    }, 5000);
+                } else {
+                    messageDiv.removeClass('alert-success').addClass('alert-danger');
+                    messageDiv.html('<strong>Error!</strong> ' + response.message);
+                    messageDiv.show();
+                }
+            },
+            error: function(xhr, status, error) {
+                var messageDiv = $('#formMessage');
+                messageDiv.removeClass('alert-success').addClass('alert-danger');
+                messageDiv.html('<strong>Error!</strong> Failed to submit appointment request. Please try again.');
+                messageDiv.show();
+            },
+            complete: function() {
+                // Re-enable button
+                submitBtn.prop('disabled', false).text(originalBtnText);
+            }
+        });
+    });
+
     
 })(jQuery);
 
