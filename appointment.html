@@ -30,6 +30,143 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Appointment Form Custom Styles -->
+    <style>
+        .appointment-form-section {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.05) 0%, rgba(0, 188, 212, 0.02) 100%);
+            border-top: 3px solid #00BCD4;
+            padding: 40px 0;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #00BCD4;
+            box-shadow: 0 0 0 0.2rem rgba(0, 188, 212, 0.15);
+            background-color: #ffffff;
+        }
+
+        .form-control::placeholder {
+            color: #999;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #1E1E1E;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        textarea.form-control {
+            resize: none;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .btn-appointment {
+            background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 14px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 13px;
+        }
+
+        .btn-appointment:hover {
+            background: linear-gradient(135deg, #0097A7 0%, #00838F 100%);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-appointment:disabled {
+            background: #bdbdbd;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            border: none;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border-left: 4px solid #2E7D32;
+        }
+
+        .alert-danger {
+            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+            color: white;
+            border-left: 4px solid #c62828;
+        }
+
+        .alert i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-info-box {
+            background: #f5f5f5;
+            border-left: 4px solid #00BCD4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .form-info-box h5 {
+            color: #00BCD4;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .form-info-box p {
+            color: #666;
+            margin: 5px 0;
+            font-size: 13px;
+        }
+
+        .spinner-border-sm {
+            width: 16px;
+            height: 16px;
+            border-width: 2px;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,18 +219,18 @@
 
 
     <!-- Appointment Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl appointment-form-section">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h4 class="section-title">Appointment</h4>
-                    <h1 class="display-5 mb-4">Make An Appointment To Start Your Dream Project</h1>
-                    <p class="mb-4">Founded in 2016, Twiggle CAD Studio is a global provider of professional photo editing and floor plan solutions for the real estate and commercial property industries. Based in Colombo, Sri Lanka, we proudly support clients across America, Europe, Asia, and Australia..</p>
+                    <h4 class="section-title">Schedule Your Appointment</h4>
+                    <h1 class="display-5 mb-4">Ready to Bring Your Vision to Life?</h1>
+                    <p class="mb-4">Founded in 2016, Twiggle CAD Studio is a global provider of professional photo editing and floor plan solutions for the real estate and commercial property industries. Based in Colombo, Sri Lanka, we proudly support clients across America, Europe, Asia, and Australia.</p>
                     <div class="row g-4">
                         <div class="col-12">
                             <div class="d-flex">
-                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px;">
-                                    <i class="fa fa-2x fa-phone-alt text-primary"></i>
+                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px; background: linear-gradient(135deg, #00BCD4, #0097A7) !important;">
+                                    <i class="fa fa-2x fa-phone-alt text-white"></i>
                                 </div>
                                 <div class="ms-4">
                                     <p class="mb-2">Call Us Now</p>
@@ -103,8 +240,8 @@
                         </div>
                         <div class="col-12">
                             <div class="d-flex">
-                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px;">
-                                    <i class="fa fa-2x fa-envelope-open text-primary"></i>
+                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-light" style="width: 65px; height: 65px; background: linear-gradient(135deg, #00BCD4, #0097A7) !important;">
+                                    <i class="fa fa-2x fa-envelope-open text-white"></i>
                                 </div>
                                 <div class="ms-4">
                                     <p class="mb-2">Mail Us Now</p>
@@ -113,53 +250,80 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-info-box" style="margin-top: 30px;">
+                        <h5>⏱️ Response Time</h5>
+                        <p>We typically respond to appointment requests within 24 hours. Submit the form to get started!</p>
+                    </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <form id="appointmentForm" method="POST" action="send_appointment.php">
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" name="name" placeholder="Your Name" style="height: 55px;" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" style="height: 55px;" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control" name="mobile" placeholder="Your Mobile" style="height: 55px;" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <select class="form-select" name="service" style="height: 55px;" required>
-                                    <option selected>Choose Service</option>
-                                    <option value="Architecture">Architecture</option>
-                                    <option value="3D Animation">3D Animation</option>
-                                    <option value="House Planning">House Planning</option>
-                                    <option value="Interior Design">Interior Design</option>
-                                    <option value="Construction">Construction</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text"
-                                        class="form-control datetimepicker-input"
-                                        name="date"
-                                        placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" required>
+                                <div class="form-group">
+                                    <label class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Your full name" required>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text"
-                                        class="form-control datetimepicker-input"
-                                        name="time"
-                                        placeholder="Choose Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" required>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" name="email" placeholder="your.email@example.com" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number *</label>
+                                    <input type="text" class="form-control" name="mobile" placeholder="+94 76 070 8494" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Service Type *</label>
+                                    <select class="form-select" name="service" required>
+                                        <option selected disabled>-- Select a service --</option>
+                                        <option value="Architecture">Architecture</option>
+                                        <option value="3D Animation">3D Animation</option>
+                                        <option value="House Planning">House Planning</option>
+                                        <option value="Interior Design">Interior Design</option>
+                                        <option value="Construction">Construction</option>
+                                        <option value="Photo Editing">Photo Editing</option>
+                                        <option value="Floor Plan">Floor Plan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Preferred Date *</label>
+                                    <div class="date" id="date" data-target-input="nearest">
+                                        <input type="text"
+                                            class="form-control datetimepicker-input"
+                                            name="date"
+                                            placeholder="Select date" data-target="#date" data-toggle="datetimepicker" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Preferred Time *</label>
+                                    <div class="time" id="time" data-target-input="nearest">
+                                        <input type="text"
+                                            class="form-control datetimepicker-input"
+                                            name="time"
+                                            placeholder="Select time" data-target="#time" data-toggle="datetimepicker" required>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control" rows="5" name="message" placeholder="Message"></textarea>
+                                <div class="form-group">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control" name="message" placeholder="Tell us more about your project... (optional)"></textarea>
+                                </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
+                                <button class="btn btn-appointment w-100" type="submit">Book Your Appointment</button>
                             </div>
                             <div class="col-12">
-                                <div id="formMessage" style="display: none;" class="alert"></div>
+                                <div id="formMessage" style="display: none;"></div>
                             </div>
                         </div>
                     </form>

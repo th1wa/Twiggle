@@ -89,7 +89,7 @@
         var originalBtnText = submitBtn.text();
         
         // Disable button and show loading state
-        submitBtn.prop('disabled', true).text('Submitting...');
+        submitBtn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Submitting...');
         
         $.ajax({
             type: 'POST',
@@ -103,11 +103,14 @@
                 
                 if (response.success) {
                     messageDiv.removeClass('alert-danger').addClass('alert-success');
-                    messageDiv.html('<strong>Success!</strong> ' + response.message);
+                    messageDiv.html('<i class="fas fa-check-circle me-2"></i><strong>Success!</strong> ' + response.message);
                     messageDiv.show();
                     
                     // Reset form
                     form[0].reset();
+                    
+                    // Scroll to message
+                    $('html, body').animate({scrollTop: messageDiv.offset().top - 50}, 500);
                     
                     // Hide message after 5 seconds
                     setTimeout(function() {
@@ -115,19 +118,25 @@
                     }, 5000);
                 } else {
                     messageDiv.removeClass('alert-success').addClass('alert-danger');
-                    messageDiv.html('<strong>Error!</strong> ' + response.message);
+                    messageDiv.html('<i class="fas fa-exclamation-circle me-2"></i><strong>Error!</strong> ' + response.message);
                     messageDiv.show();
+                    
+                    // Scroll to message
+                    $('html, body').animate({scrollTop: messageDiv.offset().top - 50}, 500);
                 }
             },
             error: function(xhr, status, error) {
                 var messageDiv = $('#formMessage');
                 messageDiv.removeClass('alert-success').addClass('alert-danger');
-                messageDiv.html('<strong>Error!</strong> Failed to submit appointment request. Please try again.');
+                messageDiv.html('<i class="fas fa-exclamation-circle me-2"></i><strong>Error!</strong> Failed to submit appointment request. Please try again.');
                 messageDiv.show();
+                
+                // Scroll to message
+                $('html, body').animate({scrollTop: messageDiv.offset().top - 50}, 500);
             },
             complete: function() {
                 // Re-enable button
-                submitBtn.prop('disabled', false).text(originalBtnText);
+                submitBtn.prop('disabled', false).html(originalBtnText);
             }
         });
     });
