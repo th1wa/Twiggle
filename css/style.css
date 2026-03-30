@@ -92,8 +92,8 @@ h6,
 
 .btn-outline-body {
     color: var(--primary);
-    /* Changed border-color from #777777 to match Twiggle dark text color */
-    border-color: #666666; 
+    /* Changed border-color from #4b4b4b to match Twiggle dark text color */
+    border-color: #444444; 
 }
 
 .btn-outline-body:hover {
@@ -516,7 +516,7 @@ h6,
     padding: 0;
     text-align: left;
     /* Updated link color to be slightly lighter than dark text but still readable */
-    color: #999999; 
+    color: #555555; 
     font-weight: normal;
     text-transform: capitalize;
     transition: .3s;
@@ -539,7 +539,7 @@ h6,
 
 .footer .form-control {
     /* Updated border-color to match Twiggle dark/medium text color */
-    border-color: #666666; 
+    border-color: #444444; 
 }
 
 .footer .copyright {
