@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://twigglecadstudio.com/sitemap.xml
