@@ -1,0 +1,34 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Redirect non-www to www to prevent duplicate content and canonical issues
+  RewriteCond %{HTTP_HOST} ^twigglecadstudio\.lk [NC]
+  RewriteRule ^(.*)$ https://www.twigglecadstudio.lk/$1 [L,R=301]
+  
+  RewriteCond %{HTTP_HOST} ^twigglecadstudio\.com [NC]
+  RewriteRule ^(.*)$ https://www.twigglecadstudio.com/$1 [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Strict-Transport-Security (HSTS) prevents downgrade attacks
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Browser caching for static assets
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  # Enable GZIP compression
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
