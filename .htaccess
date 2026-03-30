@@ -1,5 +1,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   # Redirect non-www to www to prevent duplicate content and canonical issues
   RewriteCond %{HTTP_HOST} ^twigglecadstudio\.lk [NC]
   RewriteRule ^(.*)$ https://www.twigglecadstudio.lk/$1 [L,R=301]
