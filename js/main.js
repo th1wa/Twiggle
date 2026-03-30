@@ -132,5 +132,51 @@
         });
     });
 
-    
+    // Newsletter form submission
+    window.submitNewsletter = function(e) {
+        e.preventDefault();
+        
+        var form = $(e.target);
+        var formData = new FormData(e.target);
+        var submitBtn = form.find('button[type="submit"]');
+        var originalBtnText = submitBtn.text();
+        var messageDiv = form.find('.newsletter-msg');
+        
+        submitBtn.prop('disabled', true).text('Subscribing...');
+        
+        $.ajax({
+            type: 'POST',
+            url: 'subscribe_newsletter.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    messageDiv.removeClass('text-danger').addClass('text-success');
+                    messageDiv.html('<strong>Success!</strong> ' + response.message);
+                    messageDiv.slideDown();
+                    
+                    form[0].reset();
+                    
+                    setTimeout(function() {
+                        messageDiv.slideUp();
+                    }, 5000);
+                } else {
+                    messageDiv.removeClass('text-success').addClass('text-danger');
+                    messageDiv.html('<strong>Error:</strong> ' + response.message);
+                    messageDiv.slideDown();
+                }
+            },
+            error: function() {
+                messageDiv.removeClass('text-success').addClass('text-danger');
+                messageDiv.html('<strong>Error:</strong> Failed to save subscription.');
+                messageDiv.slideDown();
+            },
+            complete: function() {
+                submitBtn.prop('disabled', false).text(originalBtnText);
+            }
+        });
+    };
+
 })(jQuery);

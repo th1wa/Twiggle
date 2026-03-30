@@ -50,6 +50,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     
+    // Save to CSV
+    $csv_file = 'appointments_log.csv';
+    $file_exists = file_exists($csv_file);
+    $fp = fopen($csv_file, 'a');
+    if ($fp) {
+        // Add UTF-8 BOM for Excel compatibility
+        if (!$file_exists) {
+            fputs($fp, chr(0xEF) . chr(0xBB) . chr(0xBF));
+            fputcsv($fp, ['Submission Date', 'Name', 'Email', 'Mobile', 'Service', 'Preferred Date', 'Preferred Time', 'Message']);
+        }
+        $submission_date = date('Y-m-d H:i:s');
+        fputcsv($fp, [$submission_date, $name, $email, $mobile, $service, $date, $time, $message]);
+        fclose($fp);
+    }
+    
     // Prepare email content
     $subject = "New Appointment Request from " . $name;
     
