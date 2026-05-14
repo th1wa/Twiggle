@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://twigglecadstudio.com/sitemap.xml
+Sitemap: https://twigglecadstudio.lk/sitemap.xml
